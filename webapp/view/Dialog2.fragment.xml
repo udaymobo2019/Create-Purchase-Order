@@ -1,0 +1,129 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns="sap.m">
+    <Dialog id = "fragLineItems" horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Add PO Line Items" type="Standard" verticalScrolling="true">
+        <content>
+        <HBox alignItems="Stretch" direction="Row" fitContainer="true" width="auto" height="auto" justifyContent="Center" renderType="Div"
+				visible="true" displayInline="false">
+				<items>
+					<form:Form width="100%" editable="true" visible="true">
+						<form:formContainers>
+							<form:FormContainer visible="true">
+								<form:formElements>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Purchase Req Number" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"
+												visible="true"/>
+										</form:label>
+										<form:fields>
+											<!--<ComboBox id="Reqnum" placeholder="Select Purchase Req Number" editable="true" selectionChange="reqnum" enabled="true" visible="true"
+												width="100%" valueState="None" maxWidth="100%">
+												<core:Item text="" enabled="true" key=""/>
+											</ComboBox>-->
+											<Input id ="idFrag2PrNo" value = "" type="Text" enabled="false"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label  text="PO Items" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<ComboBox id="idFrag2Items" placeholder="Select Item Number" editable="true" selectionChange="itm" enabled="true" visible="true" width="100%"
+												valueState="None" maxWidth="100%">
+													<core:Item text="0010" enabled="true" key="10"/>
+													<core:Item text="0020" enabled="true" key="20"/>
+													<core:Item text="0030" enabled="true" key="30"/>
+													<core:Item text="0040" enabled="true" key="40"/>
+													<core:Item text="0050" enabled="true" key="50"/>
+											</ComboBox>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Plant" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<Input id = "idFrag2Plant" value = "" type="Text" enabled="false" />
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Storage Location" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<ComboBox id="idFrag2SLoc" placeholder="Select Storage location" editable="true" selectionChange="onSLocSelection" enabled="true" visible="true" showSecondaryValues="true"
+												width="100%" valueState="None" maxWidth="100%"></ComboBox>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Material" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<ComboBox id="idFrag2Mat" placeholder="Select Material" editable="true" change="damage" enabled="true" visible="true" width="100%" showSecondaryValues="true">
+												<core:Item text="" enabled="true" key=""/>
+											</ComboBox>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Purchase Order Quantity" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<Input id="idFrag2QTY" placeholder="Enter Purchase Order Quantity" editable="true" enabled="true" visible="true" width="100%"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Price" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<Input id="idFrag2Price" placeholder="Enter Price" editable="true" enabled="true" visible="true" width="100%"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Currency" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<ComboBox id="idFrag2Currency" placeholder="Select Currency" editable="true" selectionChange="currencyChange" enabled="true" visible="true"
+												width="100%" valueState="None" maxWidth="100%">
+												<items>
+													<core:Item text="USD" enabled="true" key="USD"/>
+													<core:Item text="INR" enabled="true" key="INR"/>
+													<core:Item text="EUR" enabled="true" key="EUR"/>
+													<core:Item text="JPY" enabled="true" key="JPY"/>
+													<core:Item text="GBP" enabled="true" key="GBP"/>
+												</items>
+											</ComboBox>
+											<!--<Input id="currency" placeholder="" editable="true" enabled="true" visible="true" width="100%"/>-->
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement visible="true">
+										<form:label>
+											<Label text="Order Units" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</form:label>
+										<form:fields>
+											<Input id="idFrag2Unit" value="" placeholder="" editable="true" change="cause" enabled="true" visible="true" width="100%"/>
+										</form:fields>
+									</form:FormElement>
+								</form:formElements>
+								<form:title/>
+							</form:FormContainer>
+						</form:formContainers>
+						<form:layout>
+							<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+						</form:layout>
+					</form:Form>
+				</items>
+				<layoutData/>
+			</HBox>
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="OK" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press = "onFragOk2Button"/>
+            <Button text="Cancel" id = "idCancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onCloseDialog2"/>
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</core:FragmentDefinition>

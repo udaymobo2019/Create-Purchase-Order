@@ -1,0 +1,141 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns="sap.m">
+	<Dialog id="fragMaterial" horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Material" type="Standard"
+		verticalScrolling="true">
+		<content>
+			<IconTabBar id="idIconTabBar" select="handleIconMainTabBarSelect" expandable="true" expanded="true" applyContentPadding="true"
+				backgroundDesign="Translucent" upperCase="false" visible="true" selectedKey="Ok">
+				<items>
+					<IconTabFilter id="itb2" key="Plant" iconColor="Default" text="By Plant" count="" design="Vertical" showAll="false" textDirection="Inherit"
+						enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<HBox>
+								<Text text="Plant" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"
+									class="sapUiTinyMargin"/>
+								<ComboBox items="{oGlobalModel>/PlantSet}" id="idFragPlant" placeholder="Select Plant" editable="true" change="onPlantSelection"
+									enabled="true" visible="true" width="100%" valueState="None" maxWidth="100%" showSecondaryValues="true">
+									<core:Item text="{oGlobalModel>Plants} - {oGlobalModel>PlantsDes}" enabled="true" key="{oGlobalModel>Plants}"/>
+								</ComboBox>
+							</HBox>
+						</content>
+					</IconTabFilter>
+					<IconTabSeparator icon="" iconDensityAware="false"/>
+					<IconTabFilter iconColor="Default" text="By Material Type" key="MaterialType" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<HBox>
+								<Text text="Material Type" width="120%" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"
+									class="sapUiTinyMargin"/>
+								<ComboBox id="materialType" items="{oGlobalModel>/MaterialSet}" placeholder="select " editable="true" change="materialTypChange"
+									enabled="true" visible="true" width="100%" valueState="None" maxWidth="100%" textAlign="Left">
+									<core:Item text="{oGlobalModel>MaterialTyp} - {oGlobalModel>MaterialTypDes}" enabled="true" key="{oGlobalModel>MaterialTyp}"/>
+								</ComboBox>
+							</HBox>
+							<HBox>
+								<Text id="sfl" text="Sub Functional Location" width="120%" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+									visible="false" class="sapUiTinyMargin"/>
+								<ComboBox id="subfunctech" placeholder="" editable="true" change="tech_changez" enabled="true" visible="false" width="120%"
+									valueState="None" maxWidth="107%"></ComboBox>
+							</HBox>
+						</content>
+					</IconTabFilter>
+					<IconTabSeparator icon="" iconDensityAware="false"/>
+					<IconTabFilter iconColor="Default" text="By Material Description" key="MaterialDescription" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<content>
+							<HBox>
+								<Text text="Material Description" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"
+									class="sapUiTinyMargin"/>
+								<ComboBox id="materialDesc" items="{oGlobalModel>/Materialdecs}" placeholder="select " editable="true" change="materialDecs" enabled="true"
+									visible="true" width="100%" valueState="None" maxWidth="100%" textAlign="Left">
+									<core:Item text="{oGlobalModel>MaterialNumberDes}" enabled="true" key="{oGlobalModel>MaterialNumber}"/>
+								</ComboBox>
+							</HBox>
+						</content>
+					</IconTabFilter>
+					<IconTabSeparator icon="" iconDensityAware="false"/>
+				</items>
+				<content>
+					<Text text="Tab Bar Content goes here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+						visible="true"/>
+				</content>
+			</IconTabBar>
+			<Table id="fragTable" width="auto" noDataText="No Data" mode="SingleSelectLeft" showSeparators="All" growing="true" growingThreshold="20"
+				growingScrollToLoad="true" visible="false" class="sapUiResponsiveMargin">
+				<infoToolbar/>
+				<headerToolbar/>
+				<columns>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="UOM" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false"
+						visible="false">
+						<header>
+							<Text text="Plant" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" visible="false" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Price" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" visible="false" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Currency" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false"
+						visible="false">
+						<header>
+							<Text text="Purchase Group" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+				</columns>
+				<items>
+					<!--	<ColumnListItem type="Active">
+						<cells>
+							<Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text text="Price" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text text="UOM" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text text="Plant" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text text="Currency" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text text="Purchase Group" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</cells>
+					</ColumnListItem>-->
+				</items>
+			</Table>
+		</content>
+		<beginButton/>
+		<buttons>
+			<Button text="ClearFilter" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="ClearFilter"/>
+			<Button text="OK" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onDialogOk"/>
+			<Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="onCloseDialog"/>
+		</buttons>
+		<customHeader/>
+		<endButton/>
+		<subHeader/>
+	</Dialog>
+</core:FragmentDefinition>

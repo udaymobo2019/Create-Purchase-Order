@@ -1,0 +1,129 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZWORKORDER_MP_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="WOStatus" sap:content-version="1">
+				<Key><PropertyRef Name="Aufnr"/></Key><Property Name="Auart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Sales Doc. Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Closed" Type="Edm.String" Nullable="false" sap:label="CLOSED" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Confirmed" Type="Edm.String" Nullable="false" sap:label="CONFIRMED" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Erdat" Type="Edm.DateTime" Precision="7" sap:label="Created on" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Created" Type="Edm.String" Nullable="false" sap:label="CREATED" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Finalcount" Type="Edm.String" Nullable="false" sap:label="Frequency" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Vaplz" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Main WorkCtr" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Partiallyconf" Type="Edm.String" Nullable="false" sap:label="PARTIALLYCONF" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Released" Type="Edm.String" Nullable="false" sap:label="RELEASED" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Technicallycompleted" Type="Edm.String" Nullable="false" sap:label="TECHNICALLYCOMPLETED" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Objnr" Type="Edm.String" Nullable="false" MaxLength="22" sap:label="Object number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Parnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Responsible" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SingleStatus" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Objectstatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Order" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="StatusCount" sap:content-version="1">
+				<Key><PropertyRef Name="ImPlant"/></Key><Property Name="ClosedCount" Type="Edm.String" Nullable="false" sap:label="CLOSED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Diferent status for work order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Stcount" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Total status count" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ConfirmedCount" Type="Edm.String" Nullable="false" sap:label="CONFIRMED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ConfirmedCountTest" Type="Edm.String" Nullable="false" sap:label="CONFIRMED_COUNT_TEST" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedCount" Type="Edm.String" Nullable="false" sap:label="CREATED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Finalcount" Type="Edm.String" Nullable="false" sap:label="Frequency" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PartiallyconfCount" Type="Edm.String" Nullable="false" sap:label="PARTIALLYCONF_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReleasedCount" Type="Edm.String" Nullable="false" sap:label="RELEASED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TechnicallycompletedCount" Type="Edm.String" Nullable="false" sap:label="TECHNICALLYCOMPLETED_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PlantList" sap:content-version="1">
+				<Key><PropertyRef Name="Plant"/></Key><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Planning plant" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plannergrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Planner group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plannergrpname" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="PM PlGrp name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="WorkCenterList" sap:content-version="1">
+				<Key><PropertyRef Name="Plant"/></Key><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Planning plant" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Workcenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Work center" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Workcenterdesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="WorkOrderList" sap:content-version="1">
+				<Key><PropertyRef Name="WorkOrderNo"/></Key><Property Name="WorkOrderNo" Type="Edm.String" Nullable="false" sap:label="WorkOrderNumber" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" sap:label="Description" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SystStatus" Type="Edm.String" Nullable="false" sap:label="SystemStatus" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserStatus" Type="Edm.String" Nullable="false" sap:label="UserStatus" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Priority" Type="Edm.String" Nullable="false" sap:label="Priority" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CreatedOn" Type="Edm.String" Nullable="false" sap:label="Created On" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="OrderType" Type="Edm.String" Nullable="false" sap:label="Order Type" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PriorityNum" Type="Edm.String" Nullable="false" sap:label="Priority Number" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Plant_List" sap:content-version="1">
+				<Key><PropertyRef Name="Plant"/><PropertyRef Name="Iwerk"/></Key><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Planning plant" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/><Property Name="Iwerk" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Planning plant" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Name 1" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PlannerList" sap:content-version="1">
+				<Key><PropertyRef Name="Plant"/></Key><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Planning plant" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plannergrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Planner group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plannergrpname" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="PM PlGrp name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="WorkOrder_List" sap:content-version="1">
+				<Key><PropertyRef Name="Workordernumber"/></Key><Property Name="Workordernumber" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImPlannergrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Planner group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Ordertype" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Sales Doc. Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ImWorkcenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Work center" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Workcenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Main WorkCtr" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Createdon" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Created on" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plannergroup" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Planner group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plannername" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="PM PlGrp name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Orderstatus" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Systemstatus" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Status" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Statuscode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="WorkCenterCountSet" sap:content-version="1">
+				<Key><PropertyRef Name="CountWorkcenter"/></Key><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Diferent status for work order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CountWorkcenter" Type="Edm.String" Nullable="false" sap:label="COUNT_WORKCENTER" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="StatusCount" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Total status count" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImWorkcenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Main WorkCtr" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="WcClosedCount" Type="Edm.String" Nullable="false" sap:label="WC_CLOSED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="WcConfirmedCount" Type="Edm.String" Nullable="false" sap:label="WC_CONFIRMED_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="WcCreatedCount" Type="Edm.String" Nullable="false" sap:label="WC_CREATED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="WcPartiallyconfCount" Type="Edm.String" Nullable="false" sap:label="WC_PARTIALLYCONF_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="WcReleasedCount" Type="Edm.String" Nullable="false" sap:label="WC_RELEASED_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="WcTechnicallycompletedCount" Type="Edm.String" Nullable="false" sap:label="WC_TECHNICALLYCOMPLETED_COUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PlannerCount" sap:content-version="1">
+				<Key><PropertyRef Name="ImPlannergrp"/></Key><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Diferent status for work order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImPlannergrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Planner group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="StatusCount" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Total status count" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ImPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CountPlannergroup" Type="Edm.String" Nullable="false" sap:label="COUNT_PLANNERGROUP" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PgClosedCount" Type="Edm.String" Nullable="false" sap:label="PG_CLOSED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PgConfirmedCount" Type="Edm.String" Nullable="false" sap:label="PG_CONFIRMED_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PgCreatedCount" Type="Edm.String" Nullable="false" sap:label="PG_CREATED_COUNT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PgPartiallyconfCount" Type="Edm.String" Nullable="false" sap:label="PG_PARTIALLYCONF_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PgReleasedCount" Type="Edm.String" Nullable="false" sap:label="PG_RELEASED_COUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PgTechnicallycompletedCount" Type="Edm.String" Nullable="false" sap:label="PG_TECHNICALLYCOMPLETED_COUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PersonResponsibleF4" sap:content-version="1">
+				<Key><PropertyRef Name="Pernr"/></Key><Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Personnel No." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Arbpl" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Work center" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Short" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Object abbr." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Stext" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Name" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZWORKORDER_MP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="WOStatusSet" EntityType="ZWORKORDER_MP_SRV.WOStatus" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="StatusCountSet" EntityType="ZWORKORDER_MP_SRV.StatusCount" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="PlantListSet" EntityType="ZWORKORDER_MP_SRV.PlantList" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="WorkCenterListSet" EntityType="ZWORKORDER_MP_SRV.WorkCenterList" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="WorkOrderListSet" EntityType="ZWORKORDER_MP_SRV.WorkOrderList" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="Plant_ListSet" EntityType="ZWORKORDER_MP_SRV.Plant_List" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="PlannerListSet" EntityType="ZWORKORDER_MP_SRV.PlannerList" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="WorkOrder_ListSet" EntityType="ZWORKORDER_MP_SRV.WorkOrder_List" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="WorkCenterCountSetSet" EntityType="ZWORKORDER_MP_SRV.WorkCenterCountSet" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="PlannerCountSet" EntityType="ZWORKORDER_MP_SRV.PlannerCount" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="PersonResponsibleF4Set" EntityType="ZWORKORDER_MP_SRV.PersonResponsibleF4" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZWORKORDER_MP_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZWORKORDER_MP_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

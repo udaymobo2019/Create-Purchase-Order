@@ -1,0 +1,896 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.ba293bd41-us_1.poCreategrunt.controller.Page1" xmlns:uxap="sap.uxap"
+	xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<!--<l:VerticalLayout
+		width="100%" >
+		<l:content>
+			<Panel>
+				<FlexBox
+					height="13px"
+					alignItems="Start"
+					justifyContent="Start">
+					<items>
+					   <Button text="Back to Dashboard" type="Transparent" press="onBack"/>
+					</items>
+				</FlexBox>
+			</Panel>
+		</l:content>
+	</l:VerticalLayout>-->
+	<uxap:ObjectPageLayout showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="true"
+		subSectionLayout="TitleOnTop">
+		<uxap:headerContent>
+			<Text text=""/>
+			<Button text="With Reference to PR" id="refPO" press="onPRRefButton" type="None">
+				<customData>
+					<core:CustomData key="myBtn" writeToDom="true"></core:CustomData>
+				</customData>
+			</Button>
+			<ComboBox id="prCombo" placeholder="Select Reference PR" change="onPrNoSelection" editable="true" enabled="true" visible="false"
+				width="auto" valueState="None" maxWidth="100%" items="{oGlobalModel>/PRNumber}">
+				<items>
+					<core:Item text="{oGlobalModel>PRNumber}" enabled="true" key="{oGlobalModel>PRNumber}"/>
+				</items>
+			</ComboBox>
+			<Text text="OR"/>
+			<Button text="Create Manual PO" id="manualPO" press="onManualPOButton" type="none">
+				<customData>
+					<core:CustomData key="myBtn1" writeToDom="true"></core:CustomData>
+				</customData>
+			</Button>
+		</uxap:headerContent>
+		<uxap:headerTitle>
+			<uxap:ObjectPageHeader objectImageURI="sap-icon://create" objectTitle="" objectSubtitle="ME21N" headerDesign="Light"
+				objectImageShape="Square" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false"
+				isActionAreaAlwaysVisible="true">
+				<uxap:actions/>
+				<uxap:breadCrumbsLinks/>
+				<uxap:navigationBar>
+					<Bar>
+						<contentLeft>
+							<Button text="Back to Dashboard" type="Transparent" press="onBack"/>
+						</contentLeft>
+					</Bar>
+				</uxap:navigationBar>
+			</uxap:ObjectPageHeader>
+		</uxap:headerTitle>
+		<uxap:sections>
+			<uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="general" title="General Detail" mode="Expanded">
+						<uxap:blocks>
+							<form:Form width="100%" editable="true" visible="true">
+								<form:title/>
+								<form:formContainers>
+									<form:FormContainer id="layout1" visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="PO Document type" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idDocType" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement id="Purchaseorg" visible="true">
+												<form:label>
+													<Label text="Purchase Org" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idPurOrg" placeholder="Select Purchase Org" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement id="Purchaseorgdup" visible="false">
+												<form:label>
+													<Label text="Purchase Org" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="prpurchaseorg" placeholder="Select Purchase Org" editable="true" enabled="true" change="PRPurOrgChange" visible="true"
+														width="auto" valueState="None" maxWidth="100%" showSecondaryValues="true" items="{oGlobalModel>/PurchaseOrg}">
+														<items>
+															<core:ListItem text="{oGlobalModel>PurchasingOrg} - {oGlobalModel>PurchasingOrgDes}" key="{oGlobalModel>PurchasingOrg}"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Company Code" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idCC" placeholder="Company Code" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+									<form:FormContainer id="layout2" visible="true">
+										<form:formElements>
+											<form:FormElement id="idVendororg" visible="true">
+												<form:label>
+													<Label text="Vendor" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idVendor" placeholder="Vendor" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement id="idVendordup" visible="false">
+												<form:label>
+													<Label text="Vendor" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="prvendor" placeholder="Vendor" editable="true" selectionChange="deliverySection" enabled="true" visible="true" width="auto"
+														valueState="None" maxWidth="100%" showSecondaryValues="true" items="{oGlobalModel>/PRVendor}">
+														<items>
+															<core:ListItem text="{oGlobalModel>Creditor} - {oGlobalModel>CreditorDes}" key="{oGlobalModel>Creditor}"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement id="idPurGrorg" visible="true">
+												<form:label>
+													<Label text="Purchase Group" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idPurGrp" placeholder="Select Purchase Group" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement id="idPurGrdup" visible="false">
+												<form:label>
+													<Label text="Purchase Group" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="PRpurchasegrup" placeholder="Purchase Group" editable="true" enabled="true" visible="true" width="auto" valueState="None"
+														maxWidth="100%" showSecondaryValues="true" items="{oGlobalModel>/Purchasegroup}">
+														<items>
+															<core:ListItem text="{oGlobalModel>PurchasingGroup} - {oGlobalModel>PurchasingGroupDes}" key="{oGlobalModel>PurchasingGroup}"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Text" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<TextArea id="idText" value="" valueLiveUpdate="" editable="true"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+									<form:FormContainer id="editlayout1" visible="false">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="PO Document type" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="idEditDocType" placeholder="Select Document Type" editable="true" enabled="true" visible="true" width="auto" valueState="None"
+														maxWidth="100%">
+														<items>
+															<core:Item text="Standard PO" enabled="true" key="Spo"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Purchase Org" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="idEditOrg" placeholder="Select Purchase Org" editable="true" enabled="true" change="onPurOrgChange" visible="true"
+														width="auto" valueState="None" maxWidth="100%" showSecondaryValues="true" items="{oGlobalModel>/PurchaseOrg}">
+														<items>
+															<core:ListItem text="{oGlobalModel>PurchasingOrg} - {oGlobalModel>PurchasingOrgDes}" key="{oGlobalModel>PurchasingOrg}"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Company Code" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="idEditCompCode" placeholder="Company Code" editable="false" enabled="true" visible="true" width="auto" valueState="None"
+														maxWidth="100%" showSecondaryValues="true"></ComboBox>
+													<!--	items="{zpm_purchaseorder>/CompanyCodeF4Set}">
+														<items>
+															<core:ListItem text="{zpm_purchaseorder>CompanyCode}" key="{zpm_purchaseorder>CompanyCode}" additionalText="{zpm_purchaseorder>CompanyName}"/>
+														</items>
+													</ComboBox>-->
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+									<!--	Forms for Manual po create-->
+									<form:FormContainer id="editlayout2" visible="false">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Vendor" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="idEditVendor" placeholder="Vendor" editable="false" selectionChange="deliverySection" enabled="true" visible="true"
+														width="auto" valueState="None" maxWidth="100%" showSecondaryValues="true" items="{oGlobalModel>/VendorF4}">
+														<items>
+															<core:ListItem text="{oGlobalModel>Creditor} - {oGlobalModel>CreditorDes}" key="{oGlobalModel>Creditor}"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Purchase Group" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox id="idEditPurGrp" placeholder="Purchase Group" editable="true" enabled="true" visible="true" width="auto" valueState="None"
+														maxWidth="100%" showSecondaryValues="true" items="{oGlobalModel>/Purchasegroup}">
+														<items>
+															<core:ListItem text="{oGlobalModel>PurchasingGroup} - {oGlobalModel>PurchasingGroupDes}" key="{oGlobalModel>PurchasingGroup}"/>
+														</items>
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label id="idEditTxt" text="Text" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<TextArea id="TypeHere1" value="" valueLiveUpdate="" liveChange="handleLiveChange"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+						</uxap:blocks>
+						<uxap:moreBlocks/>
+						<uxap:actions/>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+				<uxap:customAnchorBarButton/>
+			</uxap:ObjectPageSection>
+			<!--	PR ITEMS TABLE-->
+			<uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="Item Detail" mode="Expanded">
+						<uxap:blocks>
+							<layout:BlockLayout background="Default" visible="true">
+								<layout:content>
+									<layout:BlockLayoutRow scrollable="false">
+										<layout:content>
+											<layout:BlockLayoutCell width="4" title="" titleAlignment="Begin" visible="true" titleLevel="Auto">
+												<layout:content>
+													<Table id="idTable" items="{oGlobalModel>/prdetails}" mode="MultiSelect" width="auto" noDataText="No data" showSeparators="All"
+														growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin" itemPress="rowSelectionChanged">
+														<!--	<infoToolbar>
+															<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<content>
+																	<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</content>
+															</Toolbar>
+														</infoToolbar>-->
+														<headerToolbar>
+															<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+																<content>
+																	<Title text="Items" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+																	<ToolbarSpacer width=""/>
+																	<OverflowToolbarButton id="Add" text="Items" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="false"
+																		iconDensityAware="false" press="addItemsRow"/>
+																</content>
+															</OverflowToolbar>
+														</headerToolbar>
+														<columns>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Item No" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="20%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Net Price" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Currency" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Quantity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="UoM" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Plant" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false"
+																visible="false">
+																<header>
+																	<Text text="Total Amount" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false"
+																visible="false">
+																<header>
+																	<Text text="Delivery date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+														</columns>
+														<items>
+															<ColumnListItem type="Active">
+																<cells>
+																	<Input value="{oGlobalModel>PRItemNumber}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto"
+																		valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{oGlobalModel>MaterialNumber} - {oGlobalModel>MaterialNumberDes}" type="Text" showValueHelp="false" enabled="false"
+																		visible="true" width="100%" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{oGlobalModel>NetPrice}" type="Number" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{oGlobalModel>Currency}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{oGlobalModel>PRQuantity}" type="Number" showValueHelp="false" enabled="true" visible="true" width="auto"
+																		valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" change="qtychange"/>
+																	<Input value="{oGlobalModel>Unit}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{oGlobalModel>Plant}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{oGlobalModel>TotalValue}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{oGlobalModel>DeliveryDate}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto"
+																		valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+													<Table id="idEditTable" items="{dataModel>/itemTable}" mode="MultiSelect" visible="false" width="auto" noDataText="No data"
+														showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin"
+														itemPress="rowSelectionChangedpo">
+														<headerToolbar>
+															<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+																<content>
+																	<Title text="Items" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+																	<ToolbarSpacer width=""/>
+																	<Button id="idAdd" text="Add Row" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true" iconDensityAware="false"
+																		press="addrow"/>
+																	<!--	<OverflowToolbarButton id="idAdd" text="Items" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true"
+																		iconDensityAware="false" press="addrow"/>-->
+																</content>
+															</OverflowToolbar>
+														</headerToolbar>
+														<columns>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Item No" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="20%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<!--<Column width="18%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Material Decs" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>-->
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Net Price" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Currency" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Quantity" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Uom" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false"
+																visible="false">
+																<header>
+																	<Text text="Total Amount" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="Plant" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+															<!--	<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="S.Loc." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>-->
+															<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+																<header>
+																	<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																</header>
+																<footer/>
+															</Column>
+														</columns>
+														<items>
+															<ColumnListItem type="Active">
+																<cells>
+																	<Input value="{dataModel>Empty1}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{dataModel>Empty2}" type="Text" showValueHelp="true" enabled="true" visible="true" width="100%" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0" valueHelpRequest="addItemsDialog"/>
+																	<!--	<Input value="{dataModel>Empty3}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+																	<Input value="{dataModel>Empty4}" change="calculationprice" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto"
+																		valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{dataModel>Empty5}" type="Text" showValueHelp="false" enabled="true" editable="false" visible="true" width="auto"
+																		valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="17"/>
+																	<Input value="{dataModel>Empty6}" change="calculation" type="Number" showValueHelp="false" enabled="true" visible="true" width="auto"
+																		valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{dataModel>Empty7}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{dataModel>Empty8}" type="Text" showValueHelp="false" enabled="false" visible="false" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<Input value="{dataModel>Empty9}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																		required="false" valueStateText="Invalid entry" maxLength="0"/>
+																	<!--<ComboBox placeholder="" items="{oGlobalModel>/sLocmanual}" width="10rem">
+																		<core:Item key="{oGlobalModel>Lgort} - {oGlobalModel>Lgobe}" text="{oGlobalModel>Lgort}"/>
+																	</ComboBox>-->
+																	<Button text="Delete" press="deleteRow" type="Emphasized"/>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+												</layout:content>
+											</layout:BlockLayoutCell>
+										</layout:content>
+									</layout:BlockLayoutRow>
+									<!--	PRICING CONDITIONS-->
+									<layout:BlockLayoutRow scrollable="false">
+										<layout:content>
+											<layout:BlockLayoutCell width="4" title="" titleAlignment="Begin" titleLevel="Auto" visible="true">
+												<layout:content>
+													<Panel id="PRprice" height="auto" width="100%" headerText="Pricing Condition" expandable="true" expanded="false" expandAnimation="true"
+														backgroundDesign="Solid" visible="false">
+														<content>
+															<form:Form width="100%" editable="true" visible="true">
+																<form:title/>
+																<form:formContainers>
+																	<form:FormContainer visible="true">
+																		<form:formElements>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Netprice/Qty" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idnetprice" value="" type="Number" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																					<Input id="idqty" value="" type="Number" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																				</form:fields>
+																			</form:FormElement>
+																		</form:formElements>
+																		<form:title/>
+																	</form:FormContainer>
+																	<form:FormContainer visible="true">
+																		<form:formElements>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Amount/Curr" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idamount" value="" type="Number" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																					<Input id="idcurr" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																					<!--	<Input id="idamount" placeholder="" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>
+																					<Input id="idcurr" placeholder="" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>-->
+																				</form:fields>
+																			</form:FormElement>
+																		</form:formElements>
+																		<form:title/>
+																	</form:FormContainer>
+																</form:formContainers>
+																<form:layout>
+																	<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+																</form:layout>
+															</form:Form>
+														</content>
+													</Panel>
+													<Panel id="Manualprice" height="auto" width="100%" headerText="Pricing Condition" expandable="true" expanded="false" expandAnimation="true"
+														backgroundDesign="Solid" visible="false">
+														<content>
+															<form:Form width="100%" editable="true" visible="true">
+																<form:title/>
+																<form:formContainers>
+																	<form:FormContainer visible="true">
+																		<form:formElements>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Netprice/Qty" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idpricepo" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																					<Input id="idqtypo" value="" type="Number" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																				</form:fields>
+																			</form:FormElement>
+																		</form:formElements>
+																		<form:title/>
+																	</form:FormContainer>
+																	<form:FormContainer visible="true">
+																		<form:formElements>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Amount/Curr" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idamountpo" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																					<Input id="idcurrpo" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																					<!--	<Input id="idamount" placeholder="" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>
+																					<Input id="idcurr" placeholder="" value="" type="Text" editable="false" visible="true" width="auto" maxLength="0"/>-->
+																				</form:fields>
+																			</form:FormElement>
+																		</form:formElements>
+																		<form:title/>
+																	</form:FormContainer>
+																</form:formContainers>
+																<form:layout>
+																	<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+																</form:layout>
+															</form:Form>
+														</content>
+													</Panel>
+												</layout:content>
+											</layout:BlockLayoutCell>
+										</layout:content>
+									</layout:BlockLayoutRow>
+									<!--	DELIVERY ADDRESS-->
+									<!--	<layout:BlockLayoutRow scrollable="false">
+										<layout:content>
+											<layout:BlockLayoutCell width="4" title=""  titleAlignment="Begin" titleLevel="Auto" visible="true">
+												<layout:content>
+													<Panel height="auto" width="100%" headerText="Delivery" expandable="true" expanded="false" expandAnimation="true" backgroundDesign="Solid">
+														<content>
+															<form:Form width="100%"  editable="true"  visible="true">
+																<form:title/>
+																<form:formContainers>
+																	<form:FormContainer visible="true">
+																		<form:formElements>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Name" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idNamehide" value="" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																				</form:fields>
+																			</form:FormElement>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Street" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idStreethide" value="" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																				</form:fields>
+																			</form:FormElement>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Country" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idCountryhide" value="" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																				</form:fields>
+																			</form:FormElement>
+																		</form:formElements>
+																		<form:title/>
+																	</form:FormContainer>
+																	<form:FormContainer visible="true">
+																		<form:formElements>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Delivery Date" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<DatePicker width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true"
+																						valueFormat="yyyyMMdd"/>
+																				</form:fields>
+																			</form:FormElement>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="City" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idCity" value="" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																				</form:fields>
+																			</form:FormElement>
+																			<form:FormElement visible="true">
+																				<form:label>
+																					<Label text="Postal Code" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+																				</form:label>
+																				<form:fields>
+																					<Input id="idPostalCodehide" value="" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+																						required="false" valueStateText="Invalid entry" maxLength="0"/>
+																				</form:fields>
+																			</form:FormElement>
+																		</form:formElements>
+																		<form:title/>
+																	</form:FormContainer>
+																</form:formContainers>
+																<form:layout>
+																	<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+																</form:layout>
+															</form:Form>
+														</content>
+													</Panel>
+												</layout:content>
+											</layout:BlockLayoutCell>
+										</layout:content>
+									</layout:BlockLayoutRow>-->
+								</layout:content>
+							</layout:BlockLayout>
+						</uxap:blocks>
+						<uxap:moreBlocks/>
+						<uxap:actions/>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+				<uxap:customAnchorBarButton/>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="Delivery" mode="Expanded">
+						<uxap:blocks>
+							<form:Form width="100%" id="layout3" editable="true" visible="true">
+								<form:title/>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Name" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idName" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Street" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idStreet" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Country" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idCountry" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Delivery Date" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<DatePicker id="datepickpr" width="auto" displayFormat="dd.MM.yyyy" required="false" valueStateText="Invalid entry" enabled="true"
+														visible="true" valueFormat="dd.MM.yyyy"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="District" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idDist" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Portal Code" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idPostalCode" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+							<!--	DELIVERY HIDE-->
+							<form:Form width="100%" id="editLayout3" editable="true" visible="false">
+								<form:title/>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Name" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idEditName" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Street" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idEditStreet" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Country" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idEditCountry" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Delivery Date" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<DatePicker id="deliverydate" width="auto" displayFormat="dd.MM.yyyy" required="false" valueStateText="Invalid entry" enabled="true"
+														visible="true" valueFormat="dd.MM.yyyy"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="District" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idEditDist" value="{deliveryAdd>Ort02}" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto"
+														valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Portal Code" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="idEditPostalCode" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+						</uxap:blocks>
+						<uxap:moreBlocks/>
+						<uxap:actions/>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+				<uxap:customAnchorBarButton/>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="Attachment" mode="Expanded">
+						<uxap:blocks>
+							<form:Form width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="Attachments" level="Auto"/>
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer id="WITHOUTBIND6" visible="true">
+										<form:formElements>
+											<form:FormElement>
+												<Panel>
+													<FlexBox height="100px" alignItems="Start" justifyContent="End">
+														<items>
+															<u:FileUploader buttonText="Upload" visible="true" buttonOnly="true" name="myFileUpload" value="" placeholder="Upload Attachment"
+																change="_onFileUploaderChange" enabled="true" id="fileUploader"/>
+														</items>
+													</FlexBox>
+												</Panel>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<List id="UploadCollection" mode="Delete" delete="deleteUploadedFile" itemPress="downListPress" enableBusyIndicator="true" headerText=""
+													noDataText="No Attachment" growing="true"></List>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+						</uxap:blocks>
+						<uxap:moreBlocks/>
+						<uxap:actions/>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+				<uxap:customAnchorBarButton/>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+		<uxap:footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<!--	<Button icon="sap-icon://message-popup" text="{oGlobalModel>/bapiReturnMsg/length}" type="Emphasized" press="handleMessagePopoverPress"
+						visible="{oGlobalModel>/bapiReturnMsg/visible}"/>-->
+					<ToolbarSpacer width=""/>
+					<Button id="idcreate" text="Create" press="createPO" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true"
+						iconDensityAware="false"/>
+					<Button id="idcancel" text="Cancel" press="onCancelPress" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true"
+						iconDensityAware="false"/>
+				</content>
+			</OverflowToolbar>
+		</uxap:footer>
+	</uxap:ObjectPageLayout>
+</mvc:View>
